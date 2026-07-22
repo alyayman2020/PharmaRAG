@@ -381,13 +381,10 @@ Copy-Item .env.example .env          # then paste: OPENAI_API_KEY=sk-...
 # 3 · verify the safety/logic gates ($0, no network, no OpenAI)
 uv run pytest -m deterministic -q
 
-# 4 · confirm the corpus is the full 1000
-uv run python -c "from pharmarag.ingest.selection import load_expanded; print(len(load_expanded()), 'drugs')"
-
-# 5 · start the Qdrant server (native binary — no Docker; see RUNBOOK §1)
+# 4 · start the Qdrant server (native binary — no Docker; see RUNBOOK §1)
 powershell -File scripts\start_qdrant.ps1
 
-# 6 · launch the demo UI
+# 5 · launch the demo UI
 uv run streamlit run app/main.py
 ```
 
@@ -492,7 +489,7 @@ PharmaRAG is a flagship portfolio project by **Aly** — a **licensed pharmacist
 *Educational and portfolio demonstration. Not medical advice. Not a medical device. Not clinical decision support.*
 *Always verify against current prescribing information and consult a qualified healthcare professional.*
 
-Built to demonstrate that trustworthy clinical AI — grounded, cited, calibrated, and auditable — does not require a GPU cluster or a research lab.
+Built to demonstrate that trustworthy clinical AI — grounded, cited, calibrated, and auditable.
 **It requires a safety-first architecture, honest evaluation, and about thirty dollars.**
 
 </div>
