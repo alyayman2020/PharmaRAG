@@ -1,0 +1,14 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.4
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+  - repo: local
+    hooks:
+      - id: deterministic-tests
+        name: deterministic safety gates ($0)
+        entry: uv run pytest -m deterministic -q
+        language: system
+        pass_filenames: false

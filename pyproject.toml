@@ -1,0 +1,106 @@
+[project]
+name = "pharmarag"
+version = "0.1.0"
+description = "Production-grade RAG over open pharmacological references — Track A vertical slice"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    # Parsing
+    "spl-parser",
+    "lxml>=5.2.0",
+    # Track B
+    "networkx>=3.4",
+    "pyvis>=0.3.2",
+    "langgraph>=0.2.60",
+    "langgraph-checkpoint-sqlite>=2.0.0",
+    # Vector store + sparse
+    "qdrant-client>=1.12.0",
+    "fastembed>=0.5.0",
+    # Reranking (GPU)
+    "sentence-transformers>=3.3.0",
+    "torch>=2.5.0",
+    # Generation
+    "openai>=1.60.0",
+    "tiktoken>=0.8.0",
+    # API + UI
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "sse-starlette>=2.1.0",
+    "streamlit>=1.40.0",
+    "pydantic>=2.10.0",
+    # pydantic-settings intentionally NOT used: config.py is stdlib-only
+    # Utilities
+    "httpx>=0.28.0",
+    "tenacity>=9.0.0",
+    "python-dotenv>=1.0.0",
+    "rich>=13.9.0",
+    "typer>=0.15.0",
+    "torchvision>=0.28.0",
+]
+
+[project.optional-dependencies]
+tracking = ["mlflow>=2.19.0"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.8.0",
+    "mypy>=1.14.0",
+    "lxml-stubs>=0.5.1",
+    "pre-commit>=4.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pharmarag"]
+
+[tool.uv.sources]
+spl-parser = { workspace = true }
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+# ---------------------------------------------------------------- ruff
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "packages/spl_parser/src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM", "RUF"]
+# E501: line length is advisory at 100.
+# UP042: the (str, Enum) idiom is deliberate — converting to StrEnum changes
+#   str()/f-string output ("Verdict.SAFE" -> "safe") in audit/debug strings the
+#   tests do not fully cover. JSON serialization is identical either way.
+ignore = ["E501", "UP042"]
+# Intentional typography, not confusables: "›" is the section_path separator
+# persisted in the DB and the embed-prefix separator keyed into the SHA embedding
+# cache (changing it would invalidate every cached vector); en/em dashes appear in
+# regexes that must match real FDA label text ("30–50 mL/min", empty table cells).
+allowed-confusables = ["–", "—", "›", "·", "†", "‡"]
+
+# ---------------------------------------------------------------- mypy
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_return_any = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+mypy_path = ["src", "packages/spl_parser/src"]
+
+# ---------------------------------------------------------------- pytest
+[tool.pytest.ini_options]
+testpaths = ["tests", "packages/spl_parser/tests"]
+pythonpath = [".", "src", "packages/spl_parser/src"]
+markers = [
+    "deterministic: free tests, run on every push",
+    "llm_judge: costs money, tagged releases only",
+    "network: requires internet (DailyMed / RxNav / OpenAI)",
+]
+# llm_judge is opt-in: a bare `pytest` must never spend money. An explicit
+# `-m llm_judge` on the command line overrides this (last -m wins).
+addopts = "-q --strict-markers -m \"not llm_judge\""

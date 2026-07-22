@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="urn:hl7-org:v3">
+  <id root="aaaaaaaa-0000-0000-0000-000000000001"/>
+  <setId root="11111111-2222-3333-4444-555555555555"/>
+  <versionNumber value="12"/>
+  <effectiveTime value="20251104"/>
+  <title>TESTASTATIN (testastatin calcium) tablet, film coated</title>
+  <component><structuredBody>
+    <component><section>
+      <code code="34066-1" codeSystem="2.16.840.1.113883.6.1" displayName="BOXED WARNING SECTION"/>
+      <title>WARNING: SEVERE HEPATOTOXICITY</title>
+      <text><paragraph>Fatal hepatic failure has been reported.</paragraph></text>
+    </section></component>
+    <component><section>
+      <code code="34070-3" codeSystem="2.16.840.1.113883.6.1" displayName="CONTRAINDICATIONS SECTION"/>
+      <title>4 CONTRAINDICATIONS</title>
+      <text>
+        <list>
+          <item>Hypersensitivity to testastatin.</item>
+          <item>Active hepatic disease or unexplained persistent elevations of serum transaminases.</item>
+          <item>Pregnancy and lactation.</item>
+        </list>
+      </text>
+    </section></component>
+    <component><section>
+      <code code="34073-7" codeSystem="2.16.840.1.113883.6.1" displayName="DRUG INTERACTIONS SECTION"/>
+      <title>7 DRUG INTERACTIONS</title>
+      <text><paragraph>Concomitant use with strong CYP3A4 inhibitors increases exposure.</paragraph></text>
+      <component><section>
+        <title>7.1 Cyclosporine</title>
+        <text><paragraph>Concomitant use of cyclosporine increases the risk of myopathy and rhabdomyolysis. Do not exceed 10 mg daily.</paragraph></text>
+      </section></component>
+      <component><section>
+        <title>7.2 Clarithromycin</title>
+        <text><paragraph>Avoid concomitant use. If unavoidable, limit the dose to 20 mg daily.</paragraph></text>
+      </section></component>
+    </section></component>
+    <component><section>
+      <code code="34068-7" codeSystem="2.16.840.1.113883.6.1" displayName="DOSAGE &amp; ADMINISTRATION SECTION"/>
+      <title>2 DOSAGE AND ADMINISTRATION</title>
+      <text>
+        <paragraph>The recommended starting dose is 10 mg once daily.</paragraph>
+        <table>
+          <caption>Table 1. Dosage in Renal Impairment</caption>
+          <thead>
+            <tr><th rowspan="2">Renal Function</th><th colspan="2">Recommended Dose</th></tr>
+            <tr><th>Adults</th><th>Elderly</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>CrCl greater than 50 mL/min</td><td>10 mg once daily</td><td>10 mg once daily</td></tr>
+            <tr><td>CrCl 30 to 50 mL/min</td><td>250 mg every 12 hours</td><td>250 mg every 24 hours</td></tr>
+            <tr><td>CrCl less than 30 mL/min</td><td>500 mg every 24 hours</td><td>Not recommended</td></tr>
+          </tbody>
+          <footnote>In patients also receiving a CYP3A4 inhibitor, reduce the dose by 50%.</footnote>
+        </table>
+      </text>
+    </section></component>
+    <component><section>
+      <code code="43684-0" codeSystem="2.16.840.1.113883.6.1" displayName="USE IN SPECIFIC POPULATIONS SECTION"/>
+      <title>8 USE IN SPECIFIC POPULATIONS</title>
+      <text><paragraph>See subsections.</paragraph></text>
+      <component><section>
+        <title>8.6 Renal Impairment</title>
+        <text><paragraph>Dose adjustment is required for creatinine clearance below 50 mL/min.</paragraph></text>
+      </section></component>
+      <component><section>
+        <title>8.7 Hepatic Impairment</title>
+        <text><paragraph>Contraindicated in active hepatic disease.</paragraph></text>
+      </section></component>
+    </section></component>
+    <component><section>
+      <code code="34088-5" codeSystem="2.16.840.1.113883.6.1" displayName="OVERDOSAGE SECTION"/>
+      <title>10 OVERDOSAGE</title>
+      <text><paragraph>THIS SECTION MUST NEVER REACH THE VECTOR STORE (ADR-005).</paragraph></text>
+    </section></component>
+  </structuredBody></component>
+</document>

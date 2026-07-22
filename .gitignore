@@ -1,0 +1,35 @@
+# --- data & local stores (never committed) ---
+# data/: snapshots, archive, SQLite DBs, Qdrant store, MLflow db, calibrator
+data/
+# MLflow file-store artifacts
+mlruns/
+# root-level scratch snapshot dir (real snapshots live in data/)
+snapshots/
+.qdrant-initialized
+
+# --- evaluation data that must never be committed ---
+# DDInter oracle is CC BY-NC-SA — never redistributed (ADR-001)
+eval/data/ddinter.csv
+
+# --- generated eval outputs (datasets ARE committed; run products are not) ---
+eval/data/results.jsonl
+eval/data/scorecard.json
+eval/data/abstention_curve.json
+
+# --- secrets & machine-specific ---
+.env
+# TLS-proxy CA bundle is machine-specific — never commit (see .env.example)
+certs/*.pem
+.claude/settings.local.json
+
+# --- local binaries ---
+# native Qdrant server exe (scripts/start_qdrant.ps1)
+.qdrant/
+
+# --- python / tooling caches ---
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
