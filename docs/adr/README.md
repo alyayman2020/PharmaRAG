@@ -21,7 +21,7 @@ unlikely.
 | 007 | 📄 openFDA rejected as table source — it strips table markup; DailyMed SPL XML preserves fidelity | [007-openfda-table-fidelity.md](007-openfda-table-fidelity.md) |
 | 008 | Dual table representation: structured rows preserved separately from prose, one atomic chunk per linearized row (dose never separated from its qualifier) | `packages/spl_parser/tables.py`, `src/pharmarag/chunking/` |
 | 009 | Canonical-label selection cascade: NDA/BLA first, then section coverage, then recency; variant conflicts diffed, not merged | `src/pharmarag/ingest/select.py` |
-| 010 | `spl_parser` is a standalone package, extracted to its own public repo in Phase 5 | `packages/spl_parser/` |
+| 010 | `spl_parser` is a standalone package — now extracted to its own public repo: [alyayman2020/spl-parser](https://github.com/alyayman2020/spl-parser) | `packages/spl_parser/` |
 | 011 | Section-aware chunking with parent-document retrieval (child chunks embed, parents assemble) | `src/pharmarag/chunking/chunker.py` |
 | 012 | Per-section chunk policies — a single global size would merge unrelated interaction statements into one vector | `src/pharmarag/config.py` |
 | 013 | Qualifier rule: a dose without its condition (renal band, hepatic class, age) is a wrong dose; population tags detected and enforced | `src/pharmarag/chunking/metadata.py` |

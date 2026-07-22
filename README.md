@@ -414,7 +414,7 @@ Pharma RAG/
 │   ├── cache.py                #  exact-match caching (guard verdicts never cached)
 │   ├── audit.py                #  append-only audit writer + PHI redaction
 │   └── api/                    #  FastAPI service (SSE stage streaming)
-├── packages/spl_parser/        # standalone SPL XML → sections + tables (zero pharmarag imports)
+├── packages/spl_parser/        # standalone SPL XML → sections + tables — github.com/alyayman2020/spl-parser
 ├── app/main.py                 # Streamlit explorer (scripted demo queries)
 ├── eval/                       # gold-dataset schema, metrics, calibration, DDInter oracle
 ├── scripts/                    # build_corpus_1000 · build_index · build_entities · build_graph

@@ -230,7 +230,11 @@ def parse_spl(
         doc_version = 0
 
     title_el = root.find("v3:title", NS)
-    title = _clean("".join(title_el.itertext())) if title_el is not None else ""
+    title = (
+        _clean("".join(t for t in title_el.itertext() if isinstance(t, str)))
+        if title_el is not None
+        else ""
+    )
 
     counter = [0]
     sections: list[Section] = []
